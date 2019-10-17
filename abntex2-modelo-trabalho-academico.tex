@@ -30,20 +30,20 @@
 
 \documentclass[
 	% -- opções da classe memoir --
-	12pt,				% tamanho da fonte
-	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
-	twoside,			% para impressão em recto e verso. Oposto a oneside
-	a4paper,			% tamanho do papel. 
+	12pt,						% tamanho da fonte
+	openright,					% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	twoside,					% para impressão em recto e verso. Oposto a oneside
+	a4paper,					% tamanho do papel. 
 	% -- opções da classe abntex2 --
-	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
-	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
-	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
-	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	%chapter=TITLE,				% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,				% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,			% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,		% títulos de subsubseções convertidos em letras maiúsculas
 	% -- opções do pacote babel --
-	english,			% idioma adicional para hifenização
-	french,				% idioma adicional para hifenização
-	spanish,			% idioma adicional para hifenização
-	brazil				% o último idioma é o principal do documento
+	english,					% idioma adicional para hifenização
+	french,						% idioma adicional para hifenização
+	spanish,					% idioma adicional para hifenização
+	brazil						% o último idioma é o principal do documento
 	]{abntex2}
 
 
@@ -79,82 +79,29 @@
 %		DADOS PESSOAIS
 %		Informações básicas sobre os trabalho e os autores 
 %-------------------------------------------------------------------------------------
-\titulo{Modelo Canônico de\\ Trabalho Acadêmico com \abnTeX}
-\autor{Equipe \abnTeX}
-\local{Salvador}
-\data{2018, v-1.9.7}
-\orientador{Lauro César Araujo}
-\coorientador{Equipe \abnTeX}
+\titulo			{Desenvolvimento de um co-processador de vídeo em FPGA para integração com o Robot Operating System - ROS}
+\autor			{Nestor Dias Pereira Neto}
+\local			{Salvador}
+\data			{30 de abril 2020}
+\orientador		{Wagner Oliveira}
+\coorientador	{Paulo César}
+\tipotrabalho	{Dissertação (Mestrado)} 
+\preambulo		{Esta Dissertação de Mestrado foi apresentada ao Programa de Pós Graduação em Engenharia Elétrica da Universidade Federal da Bahia, como requisito parcial para obtenção do grau de Mestre em Engenharia Elétrica.}
+
 \instituicao{%
-  Universidade do Brasil -- UBr
+  Universidade Federal da Bahia - UFBA
   \par
-  Faculdade de Arquitetura da Informação
+  Escola Politécnica
   \par
-  Programa de Pós-Graduação}
-\tipotrabalho{Tese (Doutorado)} 
-\preambulo{Modelo canônico de trabalho monográfico acadêmico em conformidade com
-as normas ABNT apresentado à comunidade de usuários \LaTeX.}
+  Programa de Pós-Graduação em Engenharia Elétrica}
+
+
+%	Configurações de aparência do PDF final
+\input{config_pdf}
 
 
 
-%-------------------------------------------------------------------------------------
-% 		CONFIGURAÇÃO PDF
-%		Configurações de aparência do PDF final
-%-------------------------------------------------------------------------------------
 
-% alterando o aspecto da cor azul
-\definecolor{blue}{RGB}{41,5,195}
-
-% informações do PDF
-\makeatletter
-\hypersetup{
-     	%pagebackref=true,
-		pdftitle={\@title}, 
-		pdfauthor={\@author},
-    	pdfsubject={\imprimirpreambulo},
-	    pdfcreator={LaTeX with abnTeX2},
-		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
-		colorlinks=true,       		% false: boxed links; true: colored links
-    	linkcolor=blue,          	% color of internal links
-    	citecolor=blue,        		% color of links to bibliography
-    	filecolor=magenta,      		% color of file links
-		urlcolor=blue,
-		bookmarksdepth=4
-}
-\makeatother
-
-
-% Posiciona figuras e tabelas no topo da página quando adicionadas sozinhas
-% em um página em branco. Ver https://github.com/abntex/abntex2/issues/170
-\makeatletter
-\setlength{\@fptop}{5pt} % Set distance from top of page to first float
-\makeatother
-
-% Possibilita criação de Quadros e Lista de quadros.
-% Ver https://github.com/abntex/abntex2/issues/176
-\newcommand{\quadroname}{Quadro}
-\newcommand{\listofquadrosname}{Lista de quadros}
-
-\newfloat[chapter]{quadro}{loq}{\quadroname}
-\newlistof{listofquadros}{loq}{\listofquadrosname}
-\newlistentry{quadro}{loq}{0}
-
-% configurações para atender às regras da ABNT
-\setfloatadjustment{quadro}{\centering}
-\counterwithout{quadro}{chapter}
-\renewcommand{\cftquadroname}{\quadroname\space} 
-\renewcommand*{\cftquadroaftersnum}{\hfill--\hfill}
-
-\setfloatlocations{quadro}{hbtp}
-
-% O tamanho do parágrafo é dado por:
-\setlength{\parindent}{1.3cm}
-
-% Controle do espaçamento entre um parágrafo e outro:
-\setlength{\parskip}{0.2cm}  % tente também \onelineskip
-
-
-\makeindex
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %																					 %
@@ -178,7 +125,6 @@ as normas ABNT apresentado à comunidade de usuários \LaTeX.}
 \imprimircapa
 \imprimirfolhaderosto*	% (o * indica que haverá a ficha bibliográfica)
 
-
 \include{pre-textuais/ficha_catalografica}
 \include{pre-textuais/errata}
 \include{pre-textuais/folha_aprovacao}
@@ -191,13 +137,10 @@ as normas ABNT apresentado à comunidade de usuários \LaTeX.}
 \include{pre-textuais/listas_siglas}
 \include{pre-textuais/listas_simbolos}
 
-% ---
 % inserir o sumario
-% ---
 \pdfbookmark[0]{\contentsname}{toc}
 \tableofcontents*
 \cleardoublepage
-% ---
 
 
 
@@ -212,7 +155,6 @@ as normas ABNT apresentado à comunidade de usuários \LaTeX.}
 \part{Preparação da pesquisa}
 \include{capitulos/capitulo2}
 
-
 \part{Referenciais teóricos}
 \include{capitulos/capitulo3}
 
@@ -220,17 +162,12 @@ as normas ABNT apresentado à comunidade de usuários \LaTeX.}
 \include{capitulos/capitulo4}
 \include{capitulos/capitulo5}
 
-
-% ----------------------------------------------------------
-% Finaliza a parte no bookmark do PDF
-% para que se inicie o bookmark na raiz
-% e adiciona espaço de parte no Sumário
-% ----------------------------------------------------------
+% Adiciona espaço de parte no Sumário
 \phantompart
 
 \include{capitulos/capitulo_conclusao}
 
-\lipsum[31-33]
+
 
 %-------------------------------------------------------------------------------------
 %		CONTEÚDO PÓS-TEXTUAL
@@ -241,67 +178,24 @@ as normas ABNT apresentado à comunidade de usuários \LaTeX.}
 
 \bibliography{references}
 
-% Consulte o manual da classe abntex2 para orientações sobre o glossário.
-%
 %\glossary
 
+% Apendices
 \begin{apendicesenv}
-
 \partapendices
-
-% ----------------------------------------------------------
-\chapter{Quisque libero justo}
-% ----------------------------------------------------------
-
-\lipsum[50]
-
-% ----------------------------------------------------------
-\chapter{Nullam elementum urna vel imperdiet sodales elit ipsum pharetra ligula
-ac pretium ante justo a nulla curabitur tristique arcu eu metus}
-% ----------------------------------------------------------
-\lipsum[55-57]
-
+\include{apendices/apendiceA}
 \end{apendicesenv}
-% ---
 
-
-% ----------------------------------------------------------
 % Anexos
-% ----------------------------------------------------------
-
-% ---
-% Inicia os anexos
-% ---
 \begin{anexosenv}
-
-% Imprime uma página indicando o início dos anexos
 \partanexos
-
-% ---
-\chapter{Morbi ultrices rutrum lorem.}
-% ---
-\lipsum[30]
-
-% ---
-\chapter{Cras non urna sed feugiat cum sociis natoque penatibus et magnis dis
-parturient montes nascetur ridiculus mus}
-% ---
-
-\lipsum[31]
-
-% ---
-\chapter{Fusce facilisis lacinia dui}
-% ---
-
-\lipsum[32]
-
+\include{anexos/anexoA}
+\include{anexos/anexoB}
+\include{anexos/anexoC}
 \end{anexosenv}
 
-%---------------------------------------------------------------------
-% INDICE REMISSIVO
-%---------------------------------------------------------------------
+% Indice remissivo
 \phantompart
 \printindex
-%---------------------------------------------------------------------
 
 \end{document}
