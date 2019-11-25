@@ -1,5 +1,19 @@
 \chapter{FreeRTOS}
 
+%O que é um sistema operacional de tempo real?
+% Porque usar um RTOS?
+    %apresentar outras técnicas alternativas ao uso de um RTOS
+
+O FreeRTOS é um sistema de tempo real de grande sucesso desde de seu início,
+é suportado por mais de 35 architectures e ``foi baixado uma vez a cada 175
+secundos no ano de 2018'' \cite{FreeRTOS_history}. O FreeRTOS é um projeto de
+\textit{free} e de código aberto disponível sobe licença MIT. O FreeRTOS foi
+a escolha para esse trabalho por não possuir restrições ao seu uso e também
+por sua popularidade, o que facilita a busca por informações de seu uso uma
+tarefa menos árdua.
+
+\section{Entendendo o FreeRTOS}
+
 FreeRTOS é um kernel de um sistema operacional de tempo real para sistemas
 embarcados, permite que aplicações sejam organizadas como coleções de 
 independentes threads mantendo os requisitos de tempo real do sistema.
@@ -7,10 +21,9 @@ Foi desesenvolvido em 2003, inicialmente por Richard Barry e posteriormente
 mantida pela \textit{Real Time Engineers Ltd.}, em 2017 o projeto 
 FreeRTOS passou aser adminitrado \textit{Amazon Web Services}.
 
-O FreeRTOS é um sistema de tempo real de grande sucesso desde de seu início,
-é suportado por mais de 35 architectures e ``foi baixado uma vez a cada 175
-secundos no ano de 2018'' \cite{FreeRTOS_history}. O FreeRTOS é um projeto de
-free e de código aberto disponível sobe licença MIT. 
+O kernel básico é formado por 
+
+ 
 
 \section{Gerenciamento de Memória}
 
