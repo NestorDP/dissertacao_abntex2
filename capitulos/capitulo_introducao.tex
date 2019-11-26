@@ -1,0 +1,125 @@
+\chapter{Introdução}
+
+
+
+Agrupar inúmeros “blocos" de softwares usados em robótica, fornecer drivers para hardwares
+específicos (sensores e atuadores), gerenciar troca de mensagens entre os nós que fazem 
+parte do sistema, são as função do ROS. Essas características fezem com que o ROS seja 
+reconhecido com um pseudo sistema operacional (PYO et al., 2017). Dessa maneira o ROS se 
+tornou muito ágil no desenvolvimento de novas aplicações para robótica. Usando nós já 
+desenvolvidos e testados por outros desenvolvedores podemos criar novos sistemas 
+completos apenas gerenciando esses nós na rede interna do ROS. Essa abordagem fez com 
+que o número de pacotes para o ROS cresça em uma taxa muito rápida, desde o ano de seu 
+lançamento, 2007, até 2012 o ROS aumentou de 1 para 3699 pacotes (YAMASHINA et al., 2005).
+
+Com essa distribuição de tarefas através de vários nós podemos criar sistemas cada
+vez mais complexos, apenas inserindo novos nós na rede ROS, essa rede é gerenciada
+pelo ROS Master, que é apensas mais um nó do sistema, mas com a função de ser um
+servidor de nome e serviços para o restante dos nós. Ele identifica os nós na rede, assim
+todos os nós podem se comunicar com os outros através de conexões peer-to-peer, Figura
+1. Para desenvolver novas aplicações para integrarem o crescente grupo de pacotes ROS, o
+desenvolvedor deve respeitar os protocolos de comunicação da rede, as bibliotecas do ROS
+facilitam a vida do desenvolvedor, por já fornecer funções prontas para o desenvolvimento
+de novos códigos compatíveis e que possam se registrar na rede. Detalhes dos protocolos e
+interno podem ser visto em (ROS, 2011a), (ROS, 2018) e (ROS, 2011b).
+
+Por se tratar de um hardware configurável o FPGA é ideal para processamento
+digitais de sinais, e segundo Meyer-Baese (2007) "os Field programmable gate array -
+FPGAs estão próximos a revolucionar o processamento digital de sinais, assim como os
+DSPs fizeram algumas décadas atrás". O potencial que os FPGAs possuem para melhorar o 
+desempenho de sistemas que utilizam processamento digitais de sinal é conhecido já algum
+tempo, as possibilidades de paralelismo, criação de estruturas de DSP dedicadas à aplicação
+são recursos muito interessantes que a possibilidade do hardware configurado oferecem,
+mas em contra partida as facilidade de desenvolvimento encontradas em aplicações que
+fazem uso de softwares não são encontradas nas mesmas proporções no mundo do hardware,
+sendo assim:
+
+\begin{itemize}
+    \item \textbf{Como estabelecer a comunicação entre o ROS e um sistema de processamento de vídeo 
+embarcado em um FPGA?}
+
+
+Esse problema inicial nos leva naturalmente a outro:
+
+
+    \item \textbf{Stabelecendo a comunicação entre o FPGA e o ROS a execução do pro-
+cessamento de vídeo de forma paralela, embarcada em um FPGA, pode
+melhorar a performance do sistema?}
+  
+\end{itemize}
+
+
+
+
+
+
+
+\section{Justificativa}
+
+Nos últimos anos novas técnicas para construção de robôs tem sido bastante estudadas, em 
+especial uma área que tem sido bastante explorada é a robótica móvel. A principal 
+características que tem sido buscada é cada vez fornecer mais autonomia ao sistemas 
+robóticos o que vem tornado cada vez seus softwares mais complexos, o que aumenta a 
+necessidade do uso de processadores cada vez mais poderosos, que consomem mais energia. 
+Entretanto a busca por mais autonomia, diz respeito também às baterias, que são as fontes 
+de energia da maioria dos robôs móveis, o que provoca uma verdadeira briga entre poder 
+de processamento e baixo consumo.
+
+Sendo assim, o FPGA pode ser uma ótima alternativa para solucionar os problemas de aumento 
+do poder de processamento em conjunto com baixo consumo de energia. Meyer-Baese (2007) 
+descreve algumas vantagens dos FPGAs modernos para uso em processamento digitais de 
+sinais, como as cadeias de fast-carry usadas para implementar MACs de alta velocidade e o 
+paralelismo tipicamente encontrado em dedign implementados em FPGA. Por essas 
+características o FPGA necessita de frequências menores de trabalho para alcançar 
+desempenho equivalente ou superior às soluções baseadas em processadores, tornando a 
+dissipação de energia menor.
+
+Foi encontrado até o memento uma única pesquisa que relaciona o ROS e FPGA para 
+processamento de vídeo, nesse ponto a proposta deste trabalho difere da solução encontrado. 
+No trabalho de Yamashina et al. (2005), são demonstradas três técnica para realizar a 
+conexão entre o FPGA e o ROS, que se diferem da proposta por essa pesquisa. A ideia é 
+utilizar um soft-core processor, que é um processador descrito em linguagem HDL embarcado 
+no FPGA (CHU, 2012), esse processador ficará responsável por estabelecer a comunicação entre 
+a rede TCP/IP e o hardware configurado no FPGA.
+
+O FPGA que será utilizado para o desenvolvimento da pesquisa é o Cyclone IV da Intel. A Intel 
+fornece o Nios II um soft-core porocessor para ser utilizado em conjunto com os seus FPGAs. 
+O Nios II é disponibilizado em duas versões, a fast: que foi projetado para alta performance e 
+a economy: projetado para ocupar um menor espaço dentro do FPGA(CHU, 2012).
+
+A versão do Nios II econômica foi escolhida por não necessitar de uma licença adicional para 
+seu uso, uma alternativa para RTOS é o FreeRTOS, que é um sistema operacional de tempo real de 
+código aberto(BARRY, 2016b) e para stack TCP/IP a Lightweight TCP/IP stack - LwIP, que é uma 
+versão do pacote de protocolos TCP/IP de código aberto para ser usado em sistemas 
+embarcado(NONGNU, 2018). Todas as ferramentas de softwares necessárias para desenvolver o 
+projeto são de uso livre, o objetivo é fazer uso de o maior número de ferramentas sem custos 
+adicionais, como licenças e softwares pagos.
+
+O tempo de desenvolvimento de projetos em FPGA é maior em relação a projetos puramente de 
+software, por isso, a pesquisa busca ao final do projeto produzir um sistema genérico que possa 
+ser usado em outras aplicações com poucas ou até mesmo nenhuma alteração se tornando uma 
+alternativa para integrar o ROS a um FPGA, de forma simples e de baixo custo, possibilitando 
+outras aplicações desta solução.
+
+\section{Objetivos}
+
+\subsection{Objetivo Geral}
+
+Desenvolver uma solução para estabelecer comunicação entre \textit{Field Programmable Gate Array - FPGA}, 
+configurado como um co-processador de vídeo e o  \textit{Robot Operating System - ROS} avaliando 
+o impacto desta aplicação ao sistema.
+
+\subsection{Objetivos Específicos}
+
+\begin{itemize}
+    \item Estudar os assuntos relevantes ao projeto: Verilog HDL, RTOS, Nios II, TCO/IP Stack, ROS;
+    \item Conhecer com detalhes os protocolos da rede TCP/IP usada para comunicação interna dos nós e serviços ROS;
+    \item Desenvolver plataforma com Nios II como base para o andamento do projeto;
+    \item Implementa um sistema operacional de tempo real - RTOS na plataforma base;
+    \item Estabelecer comunicação entre o ROS e o sistema Nios II (embarcador no FPGA) através da tecnologia Gigabit Ethernet;
+    \item Testar aplicações de processamento de vídeo em hardware em conjunto com ROS;
+    \item Avaliar a performance com a inclusão do FPGA ao sistema.
+\end{itemize}
+
+
+\section{Organização}
