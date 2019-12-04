@@ -36,8 +36,35 @@ O kernel básico é formado por
 
 \section{FreeRTOS+TCP}
 
+<<<<<<< HEAD
 \subsection{Estrutura de arquivos}
 
 
 \subsection{Adicionar os arquivos TCP/IP ao projeto FreeRTOS}
 
+=======
+FreeRTOS+TCP é um TCP/IP \textit{stack} de código aberto para o FreeRTOS, ou seja, é um extenção do do FreeRTOS que fornece uma interface progamação 
+socket para sistemas embarcados.
+
+\subsection{Orcanização do código fonte}
+
+FreeRTOS-Plus-TCP        [Contains the source files that implement the TCP/IP stack]
+  |
+  +-include              [Contains the header files for the TCP/IP stack]
+  |
+  +-portable
+      |
+      +-Compiler
+      |   +-Compiler_x   [Contains structure packing header files for Compiler_x]
+      |   +-Compiler_y   [Contains structure packing header files for Compiler_y]
+      |   +-Compiler_z   [Contains structure packing header files for Compiler_z]
+      |
+      +-BufferManagement [Source files that implement various buffer allocation schemes]
+      |
+      +-NetworkInterface
+          +-MCU_x        [Contains a network driver for the MCU_x family of microcontrollers]
+          +-MCU_y        [Contains a network driver for the MCU_y family of microcontrollers]
+          +-MCU_z        [Contains a network driver for the MCU_z family of microcontrollers]
+
+The FreeRTOS+TCP Directory Structure
+>>>>>>> 28dbe8d2c9be3feb73c102331b38736ec41f54ab
